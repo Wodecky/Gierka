@@ -11,7 +11,9 @@ namespace Gierka.Interfaces
         IPlayer ActualPlayer { get; set; }
         List<IPlayer> Players { get; set; }
 
-        void StartGame(IPlayer player, IPlayerStatistics playerStatistics, IDeck deck);
+        void StartGame();
+        void InitializeTurn();
+        void SwapPlayer();
 
     }
 }

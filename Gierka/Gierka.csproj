@@ -70,7 +70,7 @@
     <Compile Include="Classes\Deck.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Player.cs" />
-    <Compile Include="Interfaces\Deck.cs" />
+    <Compile Include="Interfaces\IDeck.cs" />
     <Compile Include="Classes\PlayerStatitics.cs" />
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />

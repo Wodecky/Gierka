@@ -21,7 +21,8 @@ namespace Gierka.Classes.Tests
                 ActualMaxMana = 6,
                 ActualHp = 15
             };            
-            Mock<Deck> deck = new Mock<Deck>();            
+            Mock<Deck> deck = new Mock<Deck>();      
+            
 
             stats.InitializeTurn(deck.Object);
 
@@ -31,5 +32,7 @@ namespace Gierka.Classes.Tests
 
 
         }
+
+        
     }
 }

@@ -16,12 +16,17 @@ namespace Gierka.Classes
             ActualPlayer = Players[0];
         }
 
+        public int CurrentTurn { get; set; } = -1;
         public IPlayer ActualPlayer { get; set; }
         public List<IPlayer> Players { get; set; }
 
         public void InitializeTurn()
         {
+            CurrentTurn++;
+
             ActualPlayer.InitializeTurn();
+            Console.WriteLine($"Tura { CurrentTurn }:");
+            Console.WriteLine(ActualPlayer.ToString());
         }
 
         public void StartGame()

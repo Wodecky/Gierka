@@ -8,6 +8,7 @@ namespace Gierka.Interfaces
 {
     public interface IGame
     {
+        int CurrentTurn { get; set; }
         IPlayer ActualPlayer { get; set; }
         List<IPlayer> Players { get; set; }
 

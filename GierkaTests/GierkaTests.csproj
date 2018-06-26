@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Classes\DeckTests.cs" />
     <Compile Include="Classes\PlayerStatiticsTests.cs" />
+    <Compile Include="Classes\PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

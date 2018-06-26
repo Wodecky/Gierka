@@ -23,8 +23,6 @@ namespace Gierka.Classes
         public void InitializeTurn()
         {
             ActualPlayer.InitializeTurn();
-
-
         }
 
         public void StartGame()

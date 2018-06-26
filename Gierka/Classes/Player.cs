@@ -42,18 +42,18 @@ namespace Gierka.Classes
             return $"{ Name } -> (Cards in hand: { string.Join(", ", CurrentHand) } ) (Mana: { PlayerStatistics.ActualMana } / { PlayerStatistics.ActualMaxMana } ) (HP: { PlayerStatistics.ActualHp } / { PlayerStatistics.MaxHp } )";
         }
 
-        public int PlayCard(int cartIndex)
+        public int PlayCard(int cardIndex)
         {
-            if (cartIndex < 0)
+            if (cardIndex < 0)
                 return -1;
-            cartIndex = cartIndex - 1;
+            cardIndex = cardIndex - 1;
 
-            if (cartIndex <= CurrentHand.Count)
+            if (cardIndex <= CurrentHand.Count)
             {
-                int res = CurrentHand[cartIndex];
+                int res = CurrentHand[cardIndex];
                 if(res <= PlayerStatistics.ActualMana)
                 {
-                    CurrentHand.RemoveAt(cartIndex);
+                    CurrentHand.RemoveAt(cardIndex);
                     PlayerStatistics.ActualMana -= res;
                     return res;
                 }

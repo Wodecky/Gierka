@@ -15,6 +15,7 @@ namespace Gierka.Interfaces
         void StartGame();
         void InitializeTurn();
         void SwapPlayer();
+        IPlayer GetWinner();
 
     }
 }

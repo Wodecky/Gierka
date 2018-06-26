@@ -45,7 +45,7 @@ namespace Gierka.Classes
         {
             ActualMaxMana++;
             ActualMana = ActualMaxMana;
-            if (deck.)
+            if (deck.IsEmpty())
             {
 
             }

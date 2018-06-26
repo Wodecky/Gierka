@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gierka
+namespace Gierka.Interfaces
 {
-    class Program
+    public interface IGame
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }

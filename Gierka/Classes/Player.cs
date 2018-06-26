@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gierka
+namespace Gierka.Classes
 {
-    class Program
+    public class Player
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

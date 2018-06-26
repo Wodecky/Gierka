@@ -18,15 +18,13 @@ namespace Gierka.Classes
 
         public int CurrentTurn { get; set; } = -1;
         public IPlayer ActualPlayer { get; set; }
-        public List<IPlayer> Players { get; set; }
+        public List<IPlayer> Players { get; set; } = new List<IPlayer>();
 
         public void InitializeTurn()
         {
-            CurrentTurn++;
-
             ActualPlayer.InitializeTurn();
-            Console.WriteLine($"Tura { CurrentTurn }:");
-            Console.WriteLine(ActualPlayer.ToString());
+
+
         }
 
         public void StartGame()
@@ -35,8 +33,16 @@ namespace Gierka.Classes
             {
                 InitializeTurn();
 
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Tura { CurrentTurn++ }:");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(ActualPlayer.ToString());
 
+                Console.Write("Wybór karty nr: ");
+                ActualPlayer.PlayCard(int.Parse(Console.ReadLine()));
 
+                Console.ResetColor();
                 SwapPlayer();
             }
         }

@@ -12,12 +12,19 @@ namespace Gierka
     {
         static void Main(string[] args)
         {
-            IPlayer playerLeft = new Player(new PlayerStatitics(), new Deck());
-            IPlayer playerRight = new Player(new PlayerStatitics(), new Deck());
+            Console.Write("Nick gracza nr 1: ");
+            string name1 = Console.ReadLine();
+            Console.Write("Nick gracza nr 2: ");
+            string name2 = Console.ReadLine();
+
+            IPlayer playerLeft = new Player(new PlayerStatitics(), new Deck(), name1);
+            IPlayer playerRight = new Player(new PlayerStatitics(), new Deck(), name2);
 
             IGame game = new Game(playerLeft, playerRight);
 
             game.StartGame();
+
+            Console.ReadKey();
         }
     }
 }

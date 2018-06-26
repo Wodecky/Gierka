@@ -10,7 +10,6 @@ namespace Gierka.Classes
     public class PlayerStatitics : IPlayerStatistics
     {
         private const int TOTALMAXMANA = 10;
-        private int actualMana;
         private int actualMaxMana;
 
         public PlayerStatitics()
@@ -22,7 +21,7 @@ namespace Gierka.Classes
 
         public int ActualHp { get; set; }
         public int MaxHp { get; set; }
-        public string Name { get; set; }
+
         public int ActualMaxMana
         {
             get
@@ -45,9 +44,9 @@ namespace Gierka.Classes
         {
             ActualMaxMana++;
             ActualMana = ActualMaxMana;
-            if (deck.)
+            if (deck.IsEmpty())
             {
-
+                ActualHp--;
             }
                         
         }

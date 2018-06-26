@@ -19,7 +19,7 @@ namespace Gierka.Classes.Tests
             IPlayerStatistics ps = new PlayerStatitics();
             IDeck d = new Deck();
             IPlayer player1 = new Player(ps, d, "Marcin");
-            IPlayer player2 = new Player(ps, d, "Marcin");
+            IPlayer player2 = new Player(ps, d, "Maciej");
 
             IGame game = new Game(player1, player2);
 
@@ -36,32 +36,35 @@ namespace Gierka.Classes.Tests
             IPlayerStatistics ps = new PlayerStatitics();
             IDeck d = new Deck();
             IPlayer player1 = new Player(ps, d, "Marcin");
-            IPlayer player2 = new Player(ps, d, "Marcin");
+            IPlayer player2 = new Player(ps, d, "Maciej");
 
             IGame game = new Game(player1, player2);
 
             //Act
-
+            var actual = game.GetOpponent();
 
             //Assert
-            Assert.AreEqual(player2, game.ActualPlayer);
+            Assert.AreEqual(player2, actual);
         }
 
         [Test()]
         public void GetWinnerTest()
         {
-            IPlayerStatistics ps = new PlayerStatitics();
+            IPlayerStatistics ps1 = new PlayerStatitics();
+            IPlayerStatistics ps2 = new PlayerStatitics();
             IDeck d = new Deck();
-            IPlayer player1 = new Player(ps, d, "Marcin");
-            IPlayer player2 = new Player(ps, d, "Marcin");
+            IPlayer player1 = new Player(ps1, d, "Marcin");
+            IPlayer player2 = new Player(ps2, d, "Maciej");
+            player2.PlayerStatistics.ActualHp = 0;
+
 
             IGame game = new Game(player1, player2);
 
             //Act
-            game.SwapPlayer();
+            var actual = game.GetWinner();
 
             //Assert
-            Assert.AreEqual(player2, game.ActualPlayer);
+            Assert.AreEqual(player1, actual);
         }
     }
 }

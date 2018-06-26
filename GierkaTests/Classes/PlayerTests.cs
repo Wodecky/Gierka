@@ -29,8 +29,6 @@ namespace Gierka.Classes.Tests
             
         }
 
-        
-
         [Test()]
         public void DrawCardFromDeckTest()
         {
@@ -70,5 +68,20 @@ namespace Gierka.Classes.Tests
 
         }
 
+        [Test()]
+        public void GetHitTest()
+        {
+            //Arrange
+            Mock<PlayerStatitics> stats = new Mock<PlayerStatitics>();
+            Mock<Deck> deck = new Mock<Deck>();
+            IPlayer player = new Player(stats.Object, deck.Object, "Marcin");
+
+            //Act
+            player.GetHit(5);
+
+            //Assert
+            Assert.AreEqual(25, player.PlayerStatistics.ActualHp);
+
+        }
     }
 }

@@ -20,9 +20,9 @@ namespace Gierka.Classes.Tests
                 ActualMana = 4,
                 ActualMaxMana = 6,
                 ActualHp = 15
-            };            
-            Mock<Deck> deck = new Mock<Deck>();      
-            
+            };
+            Mock<Deck> deck = new Mock<Deck>();
+
 
             stats.InitializeTurn(deck.Object);
 
@@ -33,6 +33,25 @@ namespace Gierka.Classes.Tests
 
         }
 
-        
+        [Test()]
+        public void PlayerStatiticsTest_MaxActualMana()
+        {
+            //Arrange
+            PlayerStatitics stats = new PlayerStatitics()
+            {
+                ActualMana = 4,
+                ActualMaxMana = 6,
+                ActualHp = 15
+            };
+
+            //Act
+            stats.ActualMaxMana = 50;
+
+
+            //Assert
+            Assert.AreEqual(10, stats.ActualMaxMana);
+
+        }
+
     }
 }

@@ -22,7 +22,8 @@ namespace Gierka.Classes
 
         public void InitializeTurn()
         {
-            ActualPlayer.InitializeTurn();
+            ActualPlayer.DrawCardFromDeck();
+            ActualPlayer.InitializeStatistics();
 
 
         }

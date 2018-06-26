@@ -9,15 +9,41 @@ namespace Gierka.Classes
 {
     public class Game : IGame
     {
+        public Game(IPlayer playerLeft, IPlayer playerRight)
+        {
+            Players.Add(playerLeft);
+            Players.Add(playerRight);
+            ActualPlayer = Players[0];
+        }
+
+        public int CurrentTurn { get; set; } = -1;
         public IPlayer ActualPlayer { get; set; }
         public List<IPlayer> Players { get; set; }
 
-        public void StartGame(IPlayer player, IPlayerStatistics playerStatistics, IDeck deck)
+        public void InitializeTurn()
+        {
+            CurrentTurn++;
+
+            ActualPlayer.InitializeTurn();
+            Console.WriteLine($"Tura { CurrentTurn }:");
+            Console.WriteLine(ActualPlayer.ToString());
+        }
+
+        public void StartGame()
         {
             while(!IsEndOfTheGame())
             {
+                InitializeTurn();
 
+
+
+                SwapPlayer();
             }
+        }
+
+        public void SwapPlayer()
+        {
+            ActualPlayer = Players.First(x => x.Name != ActualPlayer.Name);
         }
 
         private bool IsEndOfTheGame()

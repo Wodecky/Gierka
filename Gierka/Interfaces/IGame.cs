@@ -8,10 +8,13 @@ namespace Gierka.Interfaces
 {
     public interface IGame
     {
+        int CurrentTurn { get; set; }
         IPlayer ActualPlayer { get; set; }
         List<IPlayer> Players { get; set; }
 
-        void StartGame(IPlayer player, IPlayerStatistics playerStatistics, IDeck deck);
+        void StartGame();
+        void InitializeTurn();
+        void SwapPlayer();
 
     }
 }

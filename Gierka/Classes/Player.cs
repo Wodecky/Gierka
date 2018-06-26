@@ -26,9 +26,13 @@ namespace Gierka.Classes
 
         }
 
-        public void InitializeTurn()
+        public void InitializeStatistics()
         {
             PlayerStatistics.InitializeTurn(Deck);
+        }
+
+        public void DrawCardFromDeck()
+        {
             if(!Deck.IsEmpty())
                 CurrentHand.Add(Deck.Draw());
         }

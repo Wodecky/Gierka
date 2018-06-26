@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gierka.Interfaces;
 
 namespace Gierka.Classes.Tests
 {
@@ -26,7 +27,18 @@ namespace Gierka.Classes.Tests
         [Test()]
         public void PlayCardTest()
         {
-            Assert.Fail();
+            //Arrange
+            IPlayerStatistics ps = new PlayerStatitics();
+            IDeck d = new Deck();
+            IPlayer player = new Player(ps, , "Marcin");
+
+
+
+            //Act
+
+            //Assert
+
+
         }
     }
 }

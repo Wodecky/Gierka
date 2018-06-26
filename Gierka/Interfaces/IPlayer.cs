@@ -13,7 +13,8 @@ namespace Gierka.Interfaces
         List<int> CurrentHand { get; set; }
         IPlayerStatistics PlayerStatistics { get; set; }
 
-        void InitializeTurn();
+        void InitializeStatistics();
+        void DrawCardFromDeck();
         int PlayCard(int cartIndex);
     }
 }

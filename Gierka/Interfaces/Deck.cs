@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gierka.Interfaces
 {
-    interface IDeck
+    public interface IDeck
     {
         int Draw();
         void RemoveCard(int card);

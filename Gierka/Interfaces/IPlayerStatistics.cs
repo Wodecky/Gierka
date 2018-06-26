@@ -8,11 +8,13 @@ namespace Gierka.Interfaces
 {
     public interface IPlayerStatistics
     {
-        int ActualHp { get; set; }
-        int MaxHp { get; set; }
+        int ActualHp { get; set; } 
+        int MaxHp { get; }
+        
         
         int ActualMana { get; set; }
         int ActualMaxMana { get; set; }
+
 
         void InitializeTurn(IDeck deck);
     }

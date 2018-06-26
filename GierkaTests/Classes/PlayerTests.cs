@@ -16,14 +16,20 @@ namespace Gierka.Classes.Tests
         [Test()]
         public void ToStringTest()
         {
-            Assert.Fail();
+            //Arrange
+            Mock<PlayerStatitics> stats = new Mock<PlayerStatitics>();
+            Mock<Deck> deck = new Mock<Deck>();
+            Player player = new Player(stats.Object, deck.Object, "trolololo");
+
+            //Act
+            string tostring = player.ToString();
+
+            //Assert
+            Assert.AreEqual(tostring, $"trolololo-> (Cards in hand: {player.CurrentHand[0]}, {player.CurrentHand[1]}, {player.CurrentHand[2]}) ( Mana: 0 / 0 ) ( HP: 30 / 30 )");
+            
         }
 
-        [Test()]
-        public void ToStringTest()
-        {
-            Assert.Fail();
-        }
+        
 
         [Test()]
         public void DrawCardFromDeckTest()

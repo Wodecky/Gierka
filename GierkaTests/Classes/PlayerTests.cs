@@ -14,7 +14,7 @@ namespace Gierka.Classes.Tests
     public class PlayerTests
     {
         [Test()]
-        public void InitializeTurnTest()
+        public void ToStringTest()
         {
             Assert.Fail();
         }
@@ -26,6 +26,26 @@ namespace Gierka.Classes.Tests
         }
 
         [Test()]
+        public void DrawCardFromDeckTest()
+        {
+            //Arrange
+            IPlayerStatistics ps = new PlayerStatitics();
+            IDeck d = new Deck();
+
+            Mock<IDeck> mock = new Mock<IDeck>();
+            mock.Setup(x => x.IsEmpty()).Returns(false);
+            mock.Setup(x => x.Draw()).Returns(3);
+
+            IPlayer player = new Player(ps, mock.Object, "Marcin");
+
+            //Act
+            player.DrawCardFromDeck();
+
+            //Assert
+            Assert.AreEqual(4, player.CurrentHand.Count);
+            Assert.AreEqual(3, player.CurrentHand[3]);
+        }
+
         public void PlayCardTest()
         {
             //Arrange
@@ -34,14 +54,15 @@ namespace Gierka.Classes.Tests
             IPlayer player = new Player(stats.Object, deck.Object, "Marcin");
             player.CurrentHand = new List<int>() { 1, 2, 3 };
             player.PlayerStatistics.ActualMana = 6;
-            
+
             //Act
             player.PlayCard(1);
 
             //Assert
             Assert.AreEqual(player.CurrentHand, new List<int>() { 1, 3 });
             Assert.AreEqual(player.PlayerStatistics.ActualMana, 4);
-            
+
         }
+
     }
 }

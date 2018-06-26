@@ -8,6 +8,10 @@ namespace Gierka.Interfaces
 {
     public interface IGame
     {
+        IPlayer ActualPlayer { get; set; }
+        List<IPlayer> Players { get; set; }
+
+        void StartGame(IPlayer player, IPlayerStatistics playerStatistics, IDeck deck);
 
     }
 }

@@ -29,7 +29,8 @@ namespace Gierka.Classes
         public void InitializeTurn()
         {
             PlayerStatistics.InitializeTurn(Deck);
-            if(!Deck.IsEmpty()) Deck.Draw();
+            if(!Deck.IsEmpty())
+                CurrentHand.Add(Deck.Draw());
         }
 
         public override string ToString()
@@ -39,12 +40,14 @@ namespace Gierka.Classes
 
         public int PlayCard(int cartIndex)
         {
+            if (cartIndex < 0)
+                return -1;
             cartIndex = cartIndex - 1;
 
             if (cartIndex <= CurrentHand.Count)
             {
                 int res = CurrentHand[cartIndex];
-                if(res >= PlayerStatistics.ActualMana)
+                if(res <= PlayerStatistics.ActualMana)
                 {
                     CurrentHand.RemoveAt(cartIndex);
                     PlayerStatistics.ActualMana -= res;

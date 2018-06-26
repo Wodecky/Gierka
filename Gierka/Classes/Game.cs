@@ -43,10 +43,12 @@ namespace Gierka.Classes
                 int playedCardPower = 0;
                 while(playedCardPower != -1)
                 {
-                    Console.Write("Wybór karty nr: ");
+                    Console.Write("Wybór karty nr ( -1 aby pominąć turę ): ");
                     playedCardPower = ActualPlayer.PlayCard(int.Parse(Console.ReadLine()));
+
                 }
-                GetOpponent().PlayerStatistics.ActualHp -= playedCardPower;
+                if(playedCardPower != -1)
+                    GetOpponent().PlayerStatistics.ActualHp -= playedCardPower;
 
                 Console.ResetColor();
                 SwapPlayer();

@@ -12,7 +12,7 @@ namespace Gierka.Interfaces
         int MaxHp { get; set; }
         
         int ActualMana { get; set; }
-        int MaxMana { get; set; }
+        int ActualMaxMana { get; set; }
 
         void InitializeTurn(IDeck deck);
     }

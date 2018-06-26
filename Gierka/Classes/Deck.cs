@@ -38,5 +38,10 @@ namespace Gierka.Classes
             Random rand = new Random();
             return allcards[rand.Next(0, allcards.Count - 1)];
         }
+
+        public bool IsEmpty()
+        {
+            return allcards.Count == 0;
+        }
     }
 }

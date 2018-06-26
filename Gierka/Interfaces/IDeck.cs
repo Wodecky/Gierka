@@ -8,7 +8,7 @@ namespace Gierka.Interfaces
 {
     public interface IDeck
     {
-        int Draw();
-        void RemoveCard(int card);
+        int Draw();        
+        bool IsEmpty();
     }
 }

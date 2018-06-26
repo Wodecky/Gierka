@@ -11,7 +11,7 @@ namespace Gierka.Classes
     {
         public IDeck Deck { get; set; }
         public IPlayerStatistics PlayerStatistics { get; set; }
-        public List<int> CurrentHand { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<int> CurrentHand { get; set; }
 
         public Player(IPlayerStatistics playerStatistics, IDeck deck)
         {

@@ -34,13 +34,30 @@ namespace Gierka.Classes
 
         public override string ToString()
         {
-            return $"{ Name } (Cards in hand: { string.Join(", ", CurrentHand) } )";
+            return $"{ Name } -> (Cards in hand: { string.Join(", ", CurrentHand) } ) (Mana: { PlayerStatistics.ActualMana } / { PlayerStatistics.ActualMaxMana } ) (HP: { PlayerStatistics.ActualHp } / { PlayerStatistics.MaxHp } )";
         }
 
         public int PlayCard(int cartIndex)
         {
+            cartIndex = cartIndex - 1;
+
             if (cartIndex <= CurrentHand.Count)
-                return CurrentHand[cartIndex];
+            {
+                int res = CurrentHand[cartIndex];
+                if(res >= PlayerStatistics.ActualMana)
+                {
+                    CurrentHand.RemoveAt(cartIndex);
+                    PlayerStatistics.ActualMana -= res;
+                    return res;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Zbyt malo many!");
+                    Console.ResetColor();
+                }
+
+            }
             return -1;
         }
     }

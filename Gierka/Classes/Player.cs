@@ -60,12 +60,18 @@ namespace Gierka.Classes
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Zbyt malo many!");
+                    Console.WriteLine("Zbyt mało many!");
                     Console.ResetColor();
+                    return -2;
                 }
 
             }
             return -1;
+        }
+
+        public void GetHit(int value)
+        {
+            PlayerStatistics.ActualHp -= value;
         }
     }
 }

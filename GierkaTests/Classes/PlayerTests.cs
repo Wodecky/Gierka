@@ -25,7 +25,7 @@ namespace Gierka.Classes.Tests
             string tostring = player.ToString();
 
             //Assert
-            Assert.AreEqual(tostring, $"trolololo -> (Cards in hand: {player.CurrentHand[0]}, {player.CurrentHand[1]}, {player.CurrentHand[2]} ) (Mana: 0 / 0 ) (HP: 30 / 30 )");
+            Assert.AreEqual(tostring, $" -> (Cards in hand: {player.CurrentHand[0]}, {player.CurrentHand[1]}, {player.CurrentHand[2]} ) (Mana: 0 / 0 ) (HP: 30 / 30 )");
         }
 
         [Test()]
@@ -93,6 +93,7 @@ namespace Gierka.Classes.Tests
             //Act
 
             //Assert
+            
         }
     }
 }

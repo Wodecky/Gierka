@@ -79,6 +79,7 @@ namespace Gierka.Classes.Tests
 
         }
 
+        [Test()]
         public void PlayCardTest()
         {
             //Arrange
@@ -97,7 +98,7 @@ namespace Gierka.Classes.Tests
             Assert.AreEqual(result, 2);
 
         }
-
+        [Test()]
         public void PlayBadCardTest()
         {
             //Arrange

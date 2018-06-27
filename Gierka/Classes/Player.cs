@@ -81,7 +81,7 @@ namespace Gierka.Classes
 
         public bool IsOverflow()
         {
-
+            return CurrentHand.Count >= 5;
         }
     }
 

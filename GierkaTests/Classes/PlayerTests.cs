@@ -117,5 +117,31 @@ namespace Gierka.Classes.Tests
             //Assert
             Assert.AreEqual(true, actual);
         }
+        public void ConstructorNameTest()
+        {
+            //Arrange
+            Mock<PlayerStatitics> stats = new Mock<PlayerStatitics>();
+            Mock<Deck> deck = new Mock<Deck>();
+
+            //Act
+            IPlayer player = new Player(stats.Object, deck.Object, "Marcin");
+
+            //Assert
+            Assert.AreEqual(player.Name, "Marcin");
+        }
+
+        public void ConstructorBadNameTest()
+        {
+            // Arrange
+            Mock<PlayerStatitics> stats = new Mock<PlayerStatitics>();
+            Mock<Deck> deck = new Mock<Deck>();
+
+            //Act
+            IPlayer player = new Player(stats.Object, deck.Object, "");
+
+            //Assert
+            Assert.AreNotEqual(player.Name, "");
+            Assert.IsTrue(player.Name.Length > 3);
+        }
     }
 }

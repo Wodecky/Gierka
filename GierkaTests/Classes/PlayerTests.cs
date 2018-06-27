@@ -88,12 +88,16 @@ namespace Gierka.Classes.Tests
         public void IsOverflowTest()
         {
             //Arrange
-
-
+            Mock<PlayerStatitics> stats = new Mock<PlayerStatitics>();
+            Mock<Deck> deck = new Mock<Deck>();
+            IPlayer player = new Player(stats.Object, deck.Object, "Marcin");
+            player.CurrentHand = new List<int>() { 3, 4, 5, 6, 7 };
 
             //Act
+            var actual = player.IsOverflow();
 
             //Assert
+            Assert.AreEqual(true, actual);
         }
     }
 }

@@ -39,7 +39,12 @@ namespace Gierka.Classes
 
         public override string ToString()
         {
-            return $"{ Name } -> (Cards in hand: { string.Join(", ", CurrentHand) } ) (Mana: { PlayerStatistics.ActualMana } / { PlayerStatistics.ActualMaxMana } ) (HP: { PlayerStatistics.ActualHp } / { PlayerStatistics.MaxHp } )";
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write(Name);
+            Console.ResetColor();
+            
+            return $" -> (Cards in hand: { string.Join(", ", CurrentHand) } ) (Mana: { PlayerStatistics.ActualMana } / { PlayerStatistics.ActualMaxMana } ) (HP: { PlayerStatistics.ActualHp } / { PlayerStatistics.MaxHp } )";
         }
 
         public int PlayCard(int cardIndex)
@@ -73,5 +78,11 @@ namespace Gierka.Classes
         {
             PlayerStatistics.ActualHp -= value;
         }
+
+        public bool IsOverflow()
+        {
+
+        }
     }
+
 }

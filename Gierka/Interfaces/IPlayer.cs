@@ -17,5 +17,6 @@ namespace Gierka.Interfaces
         void DrawCardFromDeck();
         int PlayCard(int cartIndex);
         void GetHit(int value);
+        bool IsOverflow();
     }
 }

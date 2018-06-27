@@ -18,6 +18,9 @@ namespace Gierka.Classes
         {
             PlayerStatistics = playerStatistics;
             Deck = deck;
+            if (string.IsNullOrWhiteSpace(name))
+                name = Guid.NewGuid().ToString("N");
+
             Name = name;
 
             CurrentHand = new List<int>();

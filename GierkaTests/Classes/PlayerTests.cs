@@ -148,6 +148,8 @@ namespace Gierka.Classes.Tests
             //Assert
             Assert.AreEqual(true, actual);
         }
+
+        [Test()]
         public void ConstructorNameTest()
         {
             //Arrange
@@ -161,6 +163,7 @@ namespace Gierka.Classes.Tests
             Assert.AreEqual(player.Name, "Marcin");
         }
 
+        [Test()]
         public void ConstructorBadNameTest()
         {
             // Arrange

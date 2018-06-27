@@ -8,6 +8,7 @@ namespace Gierka.Interfaces
 {
     public interface IPlayer
     {
+
         string Name { get; set; }
         IDeck Deck { get; set; }
         List<int> CurrentHand { get; set; }
@@ -18,5 +19,6 @@ namespace Gierka.Interfaces
         int PlayCard(int cardChoice);
         void GetHit(int value);
         bool IsOverflow();
+        string GetChoice();
     }
 }

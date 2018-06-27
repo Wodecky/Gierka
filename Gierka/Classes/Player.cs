@@ -91,6 +91,11 @@ namespace Gierka.Classes
         {
             return CurrentHand.Count >= 5;
         }
+
+        public string GetChoice()
+        {
+            return Console.ReadLine();
+        }
     }
 
 }

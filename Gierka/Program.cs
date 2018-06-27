@@ -18,7 +18,7 @@ namespace Gierka
             string name2 = Console.ReadLine();
 
             IPlayer playerLeft = new Player(new PlayerStatitics(), new Deck(), name1);
-            IPlayer playerRight = new Player(new PlayerStatitics(), new Deck(), name2);
+            IPlayer playerRight = new AIPlayer(new PlayerStatitics(), new Deck(), name2);
 
             IGame game = new Game(playerLeft, playerRight);
 

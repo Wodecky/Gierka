@@ -50,7 +50,8 @@ namespace Gierka.Classes
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(ActualPlayer.ToString());
                     Console.Write($"Wybór karty nr: ");
-                    string wybor = Console.ReadLine();
+
+                    string wybor = ActualPlayer.GetChoice();
                     if (string.IsNullOrWhiteSpace(wybor))
                         break;
 

@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AIPlayer.cs" />
     <Compile Include="Classes\Deck.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Player.cs" />

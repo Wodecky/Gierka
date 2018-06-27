@@ -62,6 +62,9 @@ namespace Gierka.Classes
 
             int HigherToLower = 0;
             int LowerToHigher = 0;
+            int MiddleChoice = 0;
+            int MiddleDefinitiveChoice = 0;
+            
 
             int tempMana = PlayerStatistics.ActualMana;
 
@@ -93,9 +96,60 @@ namespace Gierka.Classes
             replica = new List<int>(smallerChoice);
             tempMana = PlayerStatistics.ActualMana;
 
-            while(replica.Any() || )
+            while(replica.Any() && tempMana >= 0)
+            {
+                double avg = replica.Average();
+                replica.Sort();
+                var higher = replica.FirstOrDefault(x => x >= Math.Ceiling(avg));
+                var lower = replica.FirstOrDefault(x => x <= Math.Floor(avg));
+                if (higher != 0 && tempMana >= higher && higher > lower)
+                {
+                    MiddleChoice += higher;
+                    if(MiddleDefinitiveChoice == 0)
+                        MiddleDefinitiveChoice = higher;
+                    tempMana -= higher;
 
-            return HigherToLower >= LowerToHigher ? smallerChoice.Max().ToString() : smallerChoice.Min().ToString();
+                    replica.Remove(higher);
+                }
+                else if(lower != 0 && tempMana >= lower && lower > higher)
+                {
+                    MiddleChoice += lower;
+                    if (MiddleDefinitiveChoice == 0)
+                        MiddleDefinitiveChoice = higher;
+                    tempMana -= lower;
+
+                    replica.Remove(lower);
+                }
+                else
+                {
+                    if (tempMana >= 0)
+                    {
+
+                        try
+                        {
+                            var temp = replica.Where(x => x <= tempMana).ToList().Max();
+                            MiddleChoice += temp;
+                            replica.Remove(temp);
+                        }
+                        catch 
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                
+            }
+
+            if (HigherToLower > LowerToHigher && HigherToLower > MiddleChoice)
+                return smallerChoice.Max().ToString();
+            else if (LowerToHigher > HigherToLower && LowerToHigher > MiddleChoice)
+                return smallerChoice.Min().ToString();
+            else if (MiddleChoice > HigherToLower && MiddleChoice > LowerToHigher)
+                return MiddleDefinitiveChoice.ToString();
+            else
+                return string.Empty;
+            
         }
 
         public void GetHit(int value)

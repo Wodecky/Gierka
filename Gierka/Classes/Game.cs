@@ -33,6 +33,10 @@ namespace Gierka.Classes
             while(!IsEndOfTheGame())
             {
                 InitializeTurn();
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("--------------------------------------------------------------------------------------------");
+                Console.ResetColor();
 
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -46,11 +50,19 @@ namespace Gierka.Classes
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(ActualPlayer.ToString());
                     Console.Write($"Wybór karty nr: ");
-                    playedCardPower = ActualPlayer.PlayCard(int.Parse(Console.ReadLine()));
+                    string wybor = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(wybor))
+                        break;
+
+                    playedCardPower = ActualPlayer.PlayCard(int.Parse(wybor));
                     if (playedCardPower > 0)
                     {
                         GetOpponent().GetHit(playedCardPower);
-                        Console.WriteLine($"Przeciwnik dostał obrażenia równe { playedCardPower }");
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"{ GetOpponent().Name } dostał obrażenia równe { playedCardPower }");
+                        Console.ResetColor();
+                        Console.WriteLine();
                     }
                     if (ActualPlayer.PlayerStatistics.ActualMana <= 0 || playedCardPower == -1 || playedCardPower == -2)
                         playedCardPower = -1;

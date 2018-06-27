@@ -34,7 +34,13 @@ namespace Gierka.Classes
         public void DrawCardFromDeck()
         {
             if(!Deck.IsEmpty())
-                CurrentHand.Add(Deck.Draw());
+            {
+                if (IsOverflow())
+                    Deck.Draw();
+                else
+                    CurrentHand.Add(Deck.Draw());
+
+            }
         }
 
         public override string ToString()
@@ -47,18 +53,17 @@ namespace Gierka.Classes
             return $" -> (Cards in hand: { string.Join(", ", CurrentHand) } ) (Mana: { PlayerStatistics.ActualMana } / { PlayerStatistics.ActualMaxMana } ) (HP: { PlayerStatistics.ActualHp } / { PlayerStatistics.MaxHp } )";
         }
 
-        public int PlayCard(int cardIndex)
+        public int PlayCard(int cardChoice)
         {
-            if (cardIndex < 0)
+            if (cardChoice < 0)
                 return -1;
-            cardIndex = cardIndex - 1;
 
-            if (cardIndex <= CurrentHand.Count)
+            if (CurrentHand.Any(x => x == cardChoice))
             {
-                int res = CurrentHand[cardIndex];
+                int res = CurrentHand.First(x => x == cardChoice);
                 if(res <= PlayerStatistics.ActualMana)
                 {
-                    CurrentHand.RemoveAt(cardIndex);
+                    CurrentHand.Remove(res);
                     PlayerStatistics.ActualMana -= res;
                     return res;
                 }

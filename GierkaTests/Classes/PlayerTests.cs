@@ -59,12 +59,31 @@ namespace Gierka.Classes.Tests
             player.PlayerStatistics.ActualMana = 6;
 
             //Act
-            player.PlayCard(1);
+            int result = player.PlayCard(2);
 
             //Assert
             Assert.AreEqual(player.CurrentHand, new List<int>() { 1, 3 });
             Assert.AreEqual(player.PlayerStatistics.ActualMana, 4);
+            Assert.AreEqual(result, 2);
 
+        }
+
+        public void PlayBadCardTest()
+        {
+            //Arrange
+            Mock<PlayerStatitics> stats = new Mock<PlayerStatitics>();
+            Mock<Deck> deck = new Mock<Deck>();
+            IPlayer player = new Player(stats.Object, deck.Object, "Marcin");
+            player.CurrentHand = new List<int>() { 1, 2, 3 };
+            player.PlayerStatistics.ActualMana = 6;
+
+            //Act
+            int result = player.PlayCard(4);
+
+            //Assert
+            Assert.AreEqual(player.CurrentHand, new List<int>() { 1, 2, 3 });
+            Assert.AreEqual(player.PlayerStatistics.ActualMana, 6);
+            Assert.AreEqual(result, -1);
         }
 
         [Test()]

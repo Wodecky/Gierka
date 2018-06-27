@@ -67,7 +67,7 @@ namespace Gierka.Classes
 
             List<int> replica = new List<int>(smallerChoice);
 
-            while(replica.Any())
+            while(replica.Any() || tempMana <= 0)
             {
                 if(replica.Max() <= tempMana)
                 {
@@ -80,7 +80,7 @@ namespace Gierka.Classes
             replica = new List<int>(smallerChoice);
             tempMana = PlayerStatistics.ActualMana;
 
-            while (replica.Any())
+            while (replica.Any() || tempMana <= 0)
             {
                 if (replica.Min() <= tempMana)
                 {

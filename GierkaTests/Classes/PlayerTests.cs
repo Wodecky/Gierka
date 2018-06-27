@@ -47,6 +47,36 @@ namespace Gierka.Classes.Tests
             //Assert
             Assert.AreEqual(4, player.CurrentHand.Count);
             Assert.AreEqual(3, player.CurrentHand[3]);
+
+        }
+
+        [Test()]
+        public void DrawCardFromDeckTest_Overflow()
+        {
+            //Arrange
+            IPlayerStatistics ps = new PlayerStatitics();
+            IDeck d = new Deck();
+
+            Mock<IDeck> mock = new Mock<IDeck>();
+            mock.Setup(x => x.IsEmpty()).Returns(false);
+            mock.Setup(x => x.Draw()).Returns(3);
+
+            IPlayer player = new Player(ps, mock.Object, "Marcin");
+
+            //Act
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+            player.DrawCardFromDeck();
+
+
+            //Assert
+            Assert.AreEqual(5, player.CurrentHand.Count);
+
         }
 
         public void PlayCardTest()

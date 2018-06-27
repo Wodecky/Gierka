@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
+using Gierka.Interfaces;
 
 namespace Gierka.Classes.Tests
 {
@@ -32,6 +33,27 @@ namespace Gierka.Classes.Tests
 
 
         }
+        [Test()]
+        public void InitializeTurnTest_Bleeding()
+        {
+            //Arrange
+            PlayerStatitics stats = new PlayerStatitics()
+            {
+                ActualMana = 4,
+                ActualMaxMana = 6,
+                ActualHp = 15
+            };
+            Mock<IDeck> deck = new Mock<IDeck>();
+            deck.Setup(x => x.IsEmpty()).Returns(true);
+
+            //Act
+            stats.InitializeTurn(deck.Object);
+
+
+            //Assert
+            Assert.AreEqual(14, stats.ActualHp);
+
+        }
 
         [Test()]
         public void PlayerStatiticsTest_MaxActualMana()
@@ -53,5 +75,20 @@ namespace Gierka.Classes.Tests
 
         }
 
+        [Test()]
+        public void PlayerStatiticsTest()
+        {
+            //Arrange
+            PlayerStatitics stats;
+
+            //Act
+            stats = new PlayerStatitics();
+
+            //Assert
+            Assert.AreEqual(30, stats.MaxHp);
+            Assert.AreEqual(30, stats.ActualHp);
+            Assert.AreEqual(0, stats.ActualMana);
+            Assert.AreEqual(0, stats.ActualMaxMana);
+        }
     }
 }

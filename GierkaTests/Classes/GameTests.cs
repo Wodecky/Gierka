@@ -66,5 +66,22 @@ namespace Gierka.Classes.Tests
             //Assert
             Assert.AreEqual(player1, actual);
         }
+
+        [Test()]
+        public void GameTest()
+        {
+            //Arrange
+            IGame game;
+            IPlayer player = new Player(new PlayerStatitics(), new Deck(), "test");
+            IPlayer player2 = new Player(new PlayerStatitics(), new Deck(), "test2");
+
+            //Act
+            game = new Game(player, player2);
+
+            //Assert
+            Assert.AreEqual(player, game.ActualPlayer);
+            Assert.AreEqual(player, game.Players[0]);
+            Assert.AreEqual(player2, game.Players[1]);
+        }
     }
 }

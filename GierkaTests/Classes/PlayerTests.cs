@@ -82,5 +82,17 @@ namespace Gierka.Classes.Tests
             Assert.AreEqual(25, player.PlayerStatistics.ActualHp);
 
         }
+
+        [Test()]
+        public void IsOverflowTest()
+        {
+            //Arrange
+
+
+
+            //Act
+
+            //Assert
+        }
     }
 }

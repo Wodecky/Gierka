@@ -32,5 +32,6 @@ namespace Gierka.Classes.Tests
 
             Assert.Contains(card, list);
         }
+
     }
 }

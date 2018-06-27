@@ -37,21 +37,22 @@ namespace Gierka.Classes
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Tura { CurrentTurn++ }:");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(ActualPlayer.ToString());
+
 
 
                 int playedCardPower = 0;
                 while(playedCardPower != -1)
                 {
-                    Console.Write("Wybór karty nr ( -1 aby pominąć turę ): ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(ActualPlayer.ToString());
+                    Console.Write($"Wybór karty nr: ");
                     playedCardPower = ActualPlayer.PlayCard(int.Parse(Console.ReadLine()));
                     if (playedCardPower > 0)
                     {
                         GetOpponent().GetHit(playedCardPower);
                         Console.WriteLine($"Przeciwnik dostał obrażenia równe { playedCardPower }");
                     }
-                    if (ActualPlayer.PlayerStatistics.ActualMana <= 0 && (playedCardPower == -1 || playedCardPower == -2))
+                    if (ActualPlayer.PlayerStatistics.ActualMana <= 0 || playedCardPower == -1 || playedCardPower == -2)
                         playedCardPower = -1;
 
                     if (GetWinner() != null)
@@ -87,7 +88,10 @@ namespace Gierka.Classes
 
         public IPlayer GetWinner()
         {
-            return Players.FirstOrDefault(x => x.PlayerStatistics.ActualHp > 0);
+            if (Players.Any(x => x.PlayerStatistics.ActualHp <= 0))
+                return Players.FirstOrDefault(x => x.PlayerStatistics.ActualHp > 0);
+            else
+                return null;
         }
     }
 }

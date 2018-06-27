@@ -41,5 +41,6 @@ namespace Gierka.Classes
         {
             return allcards.Count == 0;
         }
+
     }
 }
